@@ -1,5 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+int printArr(int *arr,int n){
+    for(int i=0;i<n;i++){
+        printf("%d ",arr[i]);
+    }
+}
 int* select_positive(const int* v, int n, int* size_positives) {
     //  for para saber el tamaño del primer arreglo
     for (int i = 0; i < n; i++) {
@@ -25,13 +30,12 @@ int main() {
     int size_positives=0; //tamaño del arreglo de positivos
 
     int* positives = select_positive(v, size_n, &size_positives);
-    
+    printf("Array : ");
+        printArr(v,size_n);
+        printf("\n");
     if(positives != NULL) {
-        printf("%d\n ",size_positives);
         printf("Numeros posistivos : ");
-        for (int i = 0; i < size_positives; i++) {
-            printf("%d ", positives[i]);
-        }
+        printArr(positives,size_positives);
         printf("\n");
         free(positives);
     } else {
