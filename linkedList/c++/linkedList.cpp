@@ -25,10 +25,10 @@ void LinkedList::addInit(int date){
 void LinkedList::push(int date){
     Node* current = head;
     Node* nuevo = new Node(date);
-    while (current){
+    while (current->next){
         current = current->next;
     }
-    current = nuevo;
+    current->next = nuevo; //
 }
 LinkedList:: ~LinkedList(){
 }
