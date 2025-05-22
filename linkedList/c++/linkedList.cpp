@@ -25,10 +25,25 @@ void LinkedList::addInit(int date){
 void LinkedList::push(int date){
     Node* current = head;
     Node* nuevo = new Node(date);
-    while (current->next){
-        current = current->next;
+    if(!current){
+        head = nuevo;
     }
-    current->next = nuevo; //
+    else{
+        while (current->next){
+            current = current->next;
+        }
+        current->next = nuevo; //
+    }
+    
+}
+void LinkedList::copiarLista(LinkedList **listanueva){
+   // Node* nuevo = (*listanueva)->head;
+    Node* current = this->head;
+    while(current){
+        (*listanueva)->push(current->date);
+        current=current->next;
+    }
 }
 LinkedList:: ~LinkedList(){
+
 }

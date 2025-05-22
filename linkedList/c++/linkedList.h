@@ -11,6 +11,7 @@ class LinkedList {
         void printLS();
         void addInit(int);
         void push(int);
+        void copiarLista(LinkedList**);
         ~LinkedList();
 };
 

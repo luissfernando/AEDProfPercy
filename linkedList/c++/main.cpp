@@ -8,6 +8,8 @@ int main(int argc, char const *argv[])
     f1->addInit(3);
     f1->addInit(4);
     f1->push(5);
-    f1->printLS();
+    LinkedList *f2 = new LinkedList();
+    f1->copiarLista(&f2);
+    f2->printLS();
     return 0;
 }
