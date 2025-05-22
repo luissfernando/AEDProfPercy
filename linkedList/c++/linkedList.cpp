@@ -37,12 +37,25 @@ void LinkedList::push(int date){
     
 }
 void LinkedList::copiarLista(LinkedList **listanueva){
-   // Node* nuevo = (*listanueva)->head;
     Node* current = this->head;
     while(current){
         (*listanueva)->push(current->date);
         current=current->next;
     }
+}
+void LinkedList::invertir(){
+    Node* anterior = nullptr;
+    Node* actual = head;
+    Node* siguiente = nullptr;
+
+    while (actual != nullptr) {
+        siguiente = actual->next;    // Guardar el siguiente nodo
+        actual->next = anterior;     // Revertir el puntero
+        anterior = actual;           // Avanzar anterior
+        actual = siguiente;          // Avanzar actual
+    }
+
+    head = anterior;
 }
 LinkedList:: ~LinkedList(){
 

@@ -12,6 +12,7 @@ class LinkedList {
         void addInit(int);
         void push(int);
         void copiarLista(LinkedList**);
+        void invertir();
         ~LinkedList();
 };
 
