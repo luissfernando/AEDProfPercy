@@ -59,15 +59,14 @@ void LinkedList::invertir(){
     head = anterior;
 }
 void LinkedList::invertirListaYoni(){
-    Node *a = head;
-    Node *b = a->next;
-    Node *c = b->next;
-    a->next = NULL;
-    while(c!=NULL){
+    Node *a = nullptr;
+    Node *b = head;
+    Node *c = nullptr;
+    while(b->next!=nullptr){
+        c=b->next;
         b->next = a;
         a=b;
         b=c;
-        c=c->next;
     }
     b->next = a;
     head = b;
