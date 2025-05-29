@@ -43,6 +43,7 @@ void LinkedList::copiarLista(LinkedList **listanueva){
         current=current->next;
     }
 }
+//revisar y hacer seguimiento
 void LinkedList::invertir(){
     Node* anterior = nullptr;
     Node* actual = head;
@@ -56,6 +57,24 @@ void LinkedList::invertir(){
     }
 
     head = anterior;
+}
+void LinkedList::invertirListaYoni(){
+    Node *a = head;
+    Node *b = a->next;
+    Node *c = b->next;
+    a->next = NULL;
+    while(c!=NULL){
+        b->next = a;
+        a=b;
+        b=c;
+        c=c->next;
+    }
+    b->next = a;
+    head = b;
+}
+//buscar posision
+bool LinkedList::find(int data , Node **&pointer){
+    return true;
 }
 LinkedList:: ~LinkedList(){
 
