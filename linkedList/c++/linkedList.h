@@ -13,7 +13,6 @@ class LinkedList {
         void push(int);
         void copiarLista(LinkedList**);
         void invertir();
-        void invertirListaYoni();
         bool find(int data, Node **&pointer);
         ~LinkedList();
 };

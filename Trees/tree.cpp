@@ -10,7 +10,7 @@ BinaryTree::BinaryTree(int data){
 // }
 bool BinaryTree::find(int _data, Node **&p){
     p = &root;
-    while(*p && _data != *(p)->data){
+    while(*p && _data != (*p)->data){
         if(_data > (*p)->data ){
             p = &((*p)->right);
         }

@@ -58,22 +58,15 @@ void LinkedList::invertir(){
 
     head = anterior;
 }
-void LinkedList::invertirListaYoni(){
-    Node *a = nullptr;
-    Node *b = head;
-    Node *c = nullptr;
-    while(b->next!=nullptr){
-        c=b->next;
-        b->next = a;
-        a=b;
-        b=c;
-    }
-    b->next = a;
-    head = b;
-}
 //buscar posision
 bool LinkedList::find(int data , Node **&pointer){
+    pointer = &head;
+    while (*pointer != nullptr){
+        std::cout<<(*pointer)->date;
+        *pointer = (*pointer)->next;
+    }
     return true;
+
 }
 LinkedList:: ~LinkedList(){
 
