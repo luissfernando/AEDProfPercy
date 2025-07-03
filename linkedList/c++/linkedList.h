@@ -14,6 +14,7 @@ class LinkedList {
         void copiarLista(LinkedList**);
         void invertir();
         bool find(int data, Node **&pointer);
+        bool find_2(int ,Node *&);
         ~LinkedList();
 };
 

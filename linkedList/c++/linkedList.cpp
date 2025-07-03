@@ -61,11 +61,25 @@ void LinkedList::invertir(){
 //buscar posision
 bool LinkedList::find(int data , Node **&pointer){
     pointer = &head;
-    while (*pointer != nullptr){
-        std::cout<<(*pointer)->date;
+    while (*pointer){
+        if((*pointer)->date == data){
+            return true;
+        }
         *pointer = (*pointer)->next;
     }
-    return true;
+    return false;
+
+}
+bool LinkedList::find_2(int data, Node *&pointer){
+    Node *current = head;
+    while(current){
+        if(current->date == data){
+            pointer = current;
+            return true;
+        }
+        current= current->next;
+    }
+    return false;
 
 }
 LinkedList:: ~LinkedList(){

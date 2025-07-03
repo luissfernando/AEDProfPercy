@@ -53,5 +53,7 @@ void Deque::removeFromBegin(){
         head = tail = nullptr;
     }
 }
-
+void Deque::removeFromEnd(){
+    
+}
 Deque::~Deque(){}
