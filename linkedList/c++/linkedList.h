@@ -10,6 +10,7 @@ class LinkedList {
         LinkedList();
         void printLS();
         void addInit(int);
+        void addInit2(int);
         void push(int);
         void copiarLista(LinkedList**);
         void invertir();

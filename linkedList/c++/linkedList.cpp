@@ -17,10 +17,23 @@ void LinkedList::printLS(){
     }
     std::cout<<std::endl;
 }
+void LinkedList::addInit2(int date){
+  Node **pointer = &head;
+  Node *nuevo = new Node(date);
+  nuevo->next  = head;
+  *pointer = nuevo;
+}
 void LinkedList::addInit(int date){
     Node *nuevo = new Node(date);
     nuevo->next = head;
     head = nuevo;
+}
+vois LinkedList::push2(int date){
+  Node **pointer = &head;
+  while(*pointer){
+    pointer = &(*pointer)->next;
+  }
+  (*pointer)->next = new Node(date);
 }
 void LinkedList::push(int date){
     Node* current = head;
