@@ -72,3 +72,12 @@ bool BinaryTree::deleted(int data){
     delete tmp;
     return true;
 }
+int BinaryTree::num_nodos_nivel_n(int n,Node *root){
+    if(root == nullptr){
+        return 0;
+    }
+    if(n == 1){
+        return 1;
+    }
+    return num_nodos_nivel_n(n-1,root->left) + num_nodos_nivel_n(n-1,root->right);
+}

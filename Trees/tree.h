@@ -11,6 +11,7 @@ class BinaryTree{
     void inOrderRecursivo(Node *);
     void mostrarInOrder();
     void go_to_next(Node **&);
+    int num_nodos_nivel_n(int,Node *);
     
 };
 

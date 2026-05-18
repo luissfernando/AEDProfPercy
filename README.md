@@ -1,1 +1,2 @@
 tareas de AED
+.vscode/
