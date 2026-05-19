@@ -12,10 +12,13 @@ class LinkedList {
         void addInit(int);
         void addInit2(int);
         void push(int);
+        void push2(int);
         void copiarLista(LinkedList**);
         void invertir();
         bool find(int data, Node **&pointer);
         bool find_2(int ,Node *&);
+        void deletedValue(int val);
+        Node* getHead();
         ~LinkedList();
 };
 

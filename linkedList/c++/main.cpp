@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
     f1->push(7);
     f1->push(8);
     f1->printLS();
-    f1->find_2(3,ptr2);
-    cout<<"si ha encontrado : "<< ptr2->date;
+    f1->deletedValue(3);
+    f1->printLS();
     return 0;
 }

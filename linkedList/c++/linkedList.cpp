@@ -28,12 +28,12 @@ void LinkedList::addInit(int date){
     nuevo->next = head;
     head = nuevo;
 }
-vois LinkedList::push2(int date){
+void LinkedList::push2(int date){
   Node **pointer = &head;
   while(*pointer){
     pointer = &(*pointer)->next;
   }
-  (*pointer)->next = new Node(date);
+  *pointer = new Node(date);
 }
 void LinkedList::push(int date){
     Node* current = head;
@@ -78,11 +78,12 @@ bool LinkedList::find(int data , Node **&pointer){
         if((*pointer)->date == data){
             return true;
         }
-        *pointer = (*pointer)->next;
+        pointer = &(*pointer)->next;
     }
     return false;
 
 }
+// NOTA: Encuentra pero no se puede modificar
 bool LinkedList::find_2(int data, Node *&pointer){
     Node *current = head;
     while(current){
@@ -94,6 +95,17 @@ bool LinkedList::find_2(int data, Node *&pointer){
     }
     return false;
 
+}
+void LinkedList::deletedValue(int val){
+  Node** pointer;
+  if(find(val,pointer)){
+    Node *tmp = *pointer;
+    *pointer = (*pointer)->next;
+    delete tmp;
+  }
+}
+Node* LinkedList::getHead(){
+  return head;
 }
 LinkedList:: ~LinkedList(){
 
