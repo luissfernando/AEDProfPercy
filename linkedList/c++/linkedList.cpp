@@ -104,8 +104,8 @@ void LinkedList::deletedValue(int val){
     delete tmp;
   }
 }
-Node* LinkedList::getHead(){
-  return head;
+Node** LinkedList::getHead(){
+  return &head;
 }
 LinkedList:: ~LinkedList(){
 
