@@ -1,6 +1,6 @@
 #include <iostream>
 #include "linkedList.h"
-
+#include "doublyLinkedList.h"
 using namespace std;
 
 int main(int argc, char const *argv[])
@@ -19,5 +19,14 @@ int main(int argc, char const *argv[])
     f1->printLS();
     f1->deletedValue(3);
     f1->printLS();
+
+    // lista doblemnete enlazada
+    cout<<"doble lista enlazada\n";
+    DoublyLinkedList *f2 = new DoublyLinkedList();
+    f2->insertToEnd(2);
+    f2->insertToEnd(3);
+    f2->printList();
+    
+
     return 0;
 }
