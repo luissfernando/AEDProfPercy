@@ -19,13 +19,11 @@ void Deque::insertAtBegin(int data){
     Node *nuevo = new Node(data);
     if(!head){
         head = tail = nuevo;
+        return ;
     }
-    else{
-        nuevo->next=head;
-        head->prev=nuevo;
-        head = nuevo;
-    }
-
+    nuevo->next=head;
+    head->prev=nuevo;
+    head = nuevo;
 }  
 void Deque::insertAtEnd(int data){
     Node *nuevo = new Node(data);
@@ -39,21 +37,23 @@ void Deque::insertAtEnd(int data){
     }
 }
 void Deque::removeFromBegin(){
-    if(!head){
-        return ; // lista vacia    
-    }
-    if(head->next){
-        Node *tmp = head;
-        head = head->next;
-        head->prev = nullptr;
-        delete tmp;
-    }
-    else{
+    if(!head || head->next == nullptr){
         delete head;
         head = tail = nullptr;
+        return ;
     }
+    head = head->next;
+    delete head->prev;
+    head->prev = nullptr;
 }
 void Deque::removeFromEnd(){
-    
+    if(!head || head->next == nullptr){
+        delete head;
+        head = tail = nullptr;
+        return;
+    }
+    tail = tail->prev;
+    delete tail->next;
+    tail->next = nullptr;
 }
 Deque::~Deque(){}
