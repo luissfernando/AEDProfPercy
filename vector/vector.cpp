@@ -53,10 +53,7 @@ void Vector::swap(int &a, int &b){
     a = b;
     b = temp;
 }
-void Vector::swapPtr(int *&a, int *&b){
-  int *tmp = a;
 
-}
 int Vector::getSize(){
   return index+1;
 }
