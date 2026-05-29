@@ -5,7 +5,11 @@ Vector::Vector(int size){
     this->index = 0;
     this->capasity = size;
 }
-void Vector::add_item(int item){
+Vector::Vector(){
+  index=capasity=0;
+  data = nullptr;
+}
+void Vector::push_back(int item){
     if(index == capasity){
         int *tmp = data;
         capasity*=2;
@@ -40,4 +44,19 @@ int Vector::search(int item){
         }
     }
     return -1;
+}
+int* Vector::get_ptrData(){
+  return data;
+}
+void Vector::swap(int &a, int &b){
+    int temp = a;
+    a = b;
+    b = temp;
+}
+void Vector::swapPtr(int *&a, int *&b){
+  int *tmp = a;
+
+}
+int Vector::getSize(){
+  return index+1;
 }
