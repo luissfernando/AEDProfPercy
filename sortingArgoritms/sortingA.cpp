@@ -31,13 +31,13 @@ namespace Sort{
     void selectionSort(Vector *v){
         int *data = v->get_ptrData();
         for(int i = 0; i < v->getSize() - 2; i++){
-            int minimo = i;
-            for(int j = i + 1; j < v->getSize()-1; j++){
-                if( *(data+j) < *(data + minimo)){
-                    minimo = j;
+            int *minimo = data+i;
+            for(int j = i; j < v->getSize()-i-2; j++){
+                if( *minimo > *(data+j) ){
+                    minimo = data+j;
                 }
             }
-            v->swap(*(data+i), *(data+minimo));
+            v->swap( *minimo, *(data+i));
         }
     }
   }
