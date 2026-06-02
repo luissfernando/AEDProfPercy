@@ -1,10 +1,10 @@
 #ifndef VECTOR_H
 #define VECTOR_H
-
+//template <typename T>
 class Vector{
     int *data;
     int index;
-    int capasity;
+    int capacity;
     public:
         Vector(int);
         Vector();
@@ -15,7 +15,10 @@ class Vector{
         void print();
         int *get_ptrData();
         void swap(int &a, int &b);
-        void swapPtr(int *&a, int*&b);
         int getSize();
+        int getCapacity();
+
+        //sobrecarga
+        int& operator[](int pos);
 };
 #endif // !VECTOR_H
