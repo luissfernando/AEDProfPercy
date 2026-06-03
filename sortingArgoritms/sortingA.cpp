@@ -40,7 +40,27 @@ namespace Sort{
             v->swap( *minimo, *(data+i));
         }
     }
-  }
+    int partition(Vector *v, int low, int high){
+      int* data = v->get_ptrData();
+      int pivot = data[high];
+      int i = low - 1;
+        for(int j = low; j < high; j++){
+            if(data[j] < pivot){
+                i++;
+                v->swap(data[i], data[j]);
+            }
+        }
+        v->swap(data[i + 1], data[high]);
+        return i + 1;
+    }
+    void quickSort(Vector *v, int low, int high){
+        if(low < high){
+            int pivotIndex = partition(v, low, high);
+            quickSort(v, low, pivotIndex - 1);
+            quickSort(v, pivotIndex + 1, high);
+        }
+    }
+}
 
 int main(){
 
@@ -63,8 +83,11 @@ int main(){
     v->print();
     */
     
-    Sort::selectionSort(v);
+    /*Sort::selectionSort(v);
     cout << "\nSelection sort:\n";
     v->print();
-    
+    */
+    Sort::quickSort(v, 0, v->getSize() - 2);
+    cout << "\nQuick sort:\n";
+    v->print();
 }

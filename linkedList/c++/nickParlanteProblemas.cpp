@@ -44,15 +44,30 @@ void deletedList(Node **href){
     delete tmp;
   }
 }
+int pop(Node **href){
+  assert(*href);
+  Node *tmp = *href;
+  *href=(*href)->next;
+  int val= tmp->date;
+  delete tmp;
+  return val;
+  
+}
 int main (int argc, char *argv[]) {
   LinkedList *f1 = new LinkedList();  f1->push(1);
   f1->push(2);
   f1->push(3);
   f1->push(4);
-  f1->push(5);
 
   Node** head = (f1->getHead());
-  deletedList(head);
+  //deletedList(head)
+  pop(head);
+  f1->printLS();
+  pop(head);
+  f1->printLS();
+  pop(head);
+  f1->printLS();
+  pop(head);
   f1->printLS();
   return 0;
 }
