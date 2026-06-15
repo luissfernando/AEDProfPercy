@@ -1,9 +1,10 @@
 #include "vector.h"
 #include <iostream>
 using namespace std;
+
 int main(int argc, char const *argv[])
 {
-    Vector *r1 = new Vector(0);
+  Vector <int>*r1 = new Vector<int>(0);
     r1->push_back(1);
     r1->push_back(2);
     r1->push_back(3);

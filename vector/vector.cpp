@@ -58,7 +58,7 @@ void Vector::swap(int &a, int &b){
 }
 
 int Vector::getSize(){
-  return index+1;
+  return index;
 }
 int Vector::getCapacity(){
   return capacity;
