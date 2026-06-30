@@ -11,3 +11,5 @@ Node<T>::Node(T data){
   this->data = data;
 }
 
+template <typename T>
+Node<T>::~Node<T>() = default;
