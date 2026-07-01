@@ -47,6 +47,13 @@ bool BST<T>::find(Node<T>**&p , T data){
   }
   return *p;
 }
+template<typename T>
+bool BST<T>::search(T data){
+  Node<T>**p;
+  if( find(p,data) )
+    return true;
+  return false;
+}
 
 template<typename T>
 void BST<T>::successor(Node<T>** &s){
@@ -57,24 +64,31 @@ void BST<T>::successor(Node<T>** &s){
 }
 
 template <typename T>
-bool BST<T>::remove(T data){
-  Node<T>**p = nullptr;
-  if( !find(p,data) ) return false;
-  if( (*p)->left && (*p)->right ){
-    Node<T> **tmp = p;
-    successor(tmp);
-    (*p)->data = (*tmp)->data;
-    p = tmp;
-  }
-  Node<T>* q = *p;
-  if( (*p)->right ){
-    *p = (*p)->right;
-  }
-  else{
-    *p = (*p)->left;
-  }
-  delete q;
-  return true;
+bool BST<T>::remove(T data) {
+    Node<T>** p = &root;
+
+    if (!find(p, data)) return false;
+
+    if ((*p)->left && (*p)->right) {
+        Node<T>** succ = &((*p)->right);
+
+        while ((*succ)->left)
+            succ = &((*succ)->left);
+
+        (*p)->data = (*succ)->data;
+
+        p = succ;
+    }
+
+    Node<T>* q = *p;
+
+    if ((*p)->left)
+        *p = (*p)->left;
+    else
+        *p = (*p)->right;
+
+    delete q;
+    return true;
 }
 
 template <typename T>

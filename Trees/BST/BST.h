@@ -21,6 +21,7 @@ class BST{
     //void treeDegenerado();
     //void recorridoAmplitud();
     void numHojas();
+    bool search(T);
     bool compararEstruc(Node<T>*, Node<T>*);
    };
 #include "BST.tpp"
