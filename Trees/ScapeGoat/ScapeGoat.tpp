@@ -27,38 +27,7 @@ void ScapeGoat<T>::printInOrder(){
   printInOrder(root);
   cout<<endl;
 }
-template <typename T>
-bool ScapeGoat<T>::insert(T data){
-  NodeP<T>* ptrNodoP;
-  NodeP<T>** ptrNodo;
-  if(find(ptrNodoP,ptrNodo,data)) 
-    return false;
-  *ptrNodo = new NodeP<T>(data);
-  (*ptrNodo)->parent = ptrNodoP;
-  n_total++;
-  n_max++;
-  
-  int d = depth(*ptrNodo);
-  double limite = log(n_max) / log(1.5);
-  if(d > limite){
-    NodeP<T> *scapegoat = findScapeGoat( *ptrNodo );
-    if( scapegoat ){
-      rebuild(scapegoat);
-    }
-  }
-  return true;
-}
 
-template<typename T>
-NodeP<T>* ScapeGoat<T>::findScapeGoat(NodeP<T>* ptrNodo){
-  while(ptrNodo){
-    NodeP<T>* parent = ptrNodo->parent;
-    if(3 * size(ptrNodo) > 2 * size(parent))
-      return parent;
-    ptrNodo = parent;
-  }
-  return nullptr;
-}
 template <typename T>
 bool ScapeGoat<T>::find(NodeP<T>*& ptrNodoP ,NodeP<T>**& ptrNodo , T data){
   ptrNodoP = nullptr;
@@ -101,7 +70,7 @@ bool ScapeGoat<T>::remove(T data){
   delete q;
 
   n_total--;
-  if(n_total < n_max / 2){
+  if((n_total < n_max * (2.0 / 3.0))){
     rebuild(root);
     n_max = n_total;
   }
@@ -120,6 +89,15 @@ int ScapeGoat<T>::size(NodeP<T>* node){
 }
 
 template<typename T>
+bool ScapeGoat<T>::search(T data){
+  NodeP<T>**node;
+  NodeP<T>* p;
+  if( find(p,node,data) )
+    return true;
+  return false;
+}
+
+template<typename T>
 int ScapeGoat<T>::depth(NodeP<T>* node){
   int d = 0;
   while(node != root){
@@ -127,6 +105,40 @@ int ScapeGoat<T>::depth(NodeP<T>* node){
     d++;
   }
   return d;
+}
+
+template <typename T>
+bool ScapeGoat<T>::insert(T data){
+  NodeP<T>* ptrNodoP;
+  NodeP<T>** ptrNodo;
+  if(find(ptrNodoP,ptrNodo,data)) 
+    return false;
+  *ptrNodo = new NodeP<T>(data);
+  (*ptrNodo)->parent = ptrNodoP;
+  n_total++;
+  n_max++;
+  
+  int d = depth(*ptrNodo);
+  double limite = log(n_max) / log(1.5);
+  if( !(limite >= d) ){
+    NodeP<T> *scapegoat = findScapeGoat( *ptrNodo );
+    if( scapegoat ){
+      rebuild(scapegoat);
+    }
+  }
+  return true;
+}
+
+template<typename T>
+NodeP<T>* ScapeGoat<T>::findScapeGoat(NodeP<T>* ptrNodo){
+  while(ptrNodo){
+    NodeP<T>* parent = ptrNodo->parent;
+    bool condition = ((float)size(ptrNodo) / size(parent)) > (2.0f / 3.0f);
+    if(condition)
+      return parent;
+    ptrNodo = parent;
+  }
+  return nullptr;
 }
 template<typename T>
 int ScapeGoat<T>::flatten(NodeP<T>* node, NodeP<T>** arr, int index){

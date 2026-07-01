@@ -7,8 +7,8 @@ template<typename T>
 class ScapeGoat{
   private:
     NodeP<T>* root;
-    int n_total;          // cantidad de nodos actuales
-    int n_max;          // máximo numero de nodos alcanzado
+    int n_total;
+    int n_max;
     bool find(NodeP<T>*&,NodeP<T>**&,T);
     void printInOrder(NodeP<T>*);
     void successor(NodeP<T>**&);
@@ -23,6 +23,8 @@ class ScapeGoat{
     ScapeGoat(T);
     bool insert(T);
     bool remove(T);
+    bool search(T);
+
     void printInOrder();
     NodeP<T>* getRoot();
 };
