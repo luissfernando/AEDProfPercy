@@ -55,7 +55,8 @@ void ScapeGoat<T>::successor(NodeP<T>** &s){
 template <typename T>
 bool ScapeGoat<T>::remove(T data){
   NodeP<T>**p = nullptr;
-  if( !find(p,data) ) return false;
+  NodeP<T>*Pp= nullptr;
+  if( !find(Pp,p,data) ) return false;
   if( (*p)->left && (*p)->right ){
     NodeP<T> **tmp = p;
     successor(tmp);
