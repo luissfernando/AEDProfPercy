@@ -7,12 +7,13 @@ class AVL{
   int factor_balance( NodeAVL <T>* );
   int height( NodeAVL <T>* );
   bool find( NodeAVL <T>**&, T );
+
   public:
     AVL(T data);
     AVL();
     void insert(T data);
     NodeAVL<T>* getRoot();
-    ~AVL();
+    ~AVL();int
 
 };
 #include "AVL.tpp"

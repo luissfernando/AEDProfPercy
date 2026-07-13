@@ -19,6 +19,7 @@ class LinkedList {
     void invertir();
     bool find(T data, Node<T>**& pointer); 
     void deletedValue(T val);
+    T getInit();
     Node<T>** getHead();
     ~LinkedList();
 };

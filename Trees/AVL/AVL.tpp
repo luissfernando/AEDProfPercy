@@ -26,6 +26,7 @@ int AVL<T>::height(NodeAVL<T>* node){
 template<typename T>
 bool AVL<T>::find(NodeAVL<T>**& p, T data){
   p = &root;
+
   while(*p && (*p)->data != data ){
     if( data < (*p)->data )
       p = &((*p)->left);
@@ -41,7 +42,7 @@ void AVL<T>::insert(T data){
   NodeAVL<T>** p;
   if( find(p,data) ) return ;
   *p = new NodeAVL<T>(data);
-  
+  rebalancing();
 }
 
 
