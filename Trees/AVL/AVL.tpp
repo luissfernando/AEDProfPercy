@@ -1,4 +1,6 @@
 #include "AVL.h"
+#include <iostream>
+using namespace std;
 
 #define MAX(A,B) ( (A) > (B) ? (A) :  (B) )
 inline int max(int a, int b){
@@ -7,6 +9,7 @@ inline int max(int a, int b){
 template<typename T>
 AVL<T>::AVL(T data){
   root = new NodeAVL<T>(data);
+  stack = new Stack<NodeAVL<T>**>();
   root->left = root->right = nullptr;
 }
 template<typename T>
@@ -26,8 +29,9 @@ int AVL<T>::height(NodeAVL<T>* node){
 template<typename T>
 bool AVL<T>::find(NodeAVL<T>**& p, T data){
   p = &root;
-
+  stack->clear();
   while(*p && (*p)->data != data ){
+    stack->push(p);
     if( data < (*p)->data )
       p = &((*p)->left);
     else{
@@ -44,6 +48,12 @@ void AVL<T>::insert(T data){
   *p = new NodeAVL<T>(data);
   rebalancing();
 }
+template<typename T>
+void AVL<T>::rebalancing(){
+  int fb;
+  while(!stack->isEmpty()){
+    NodeAVL<T>** tmp;
+    //cout<< (*stack->pop())->data;
 
-
-
+  }
+}
