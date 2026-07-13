@@ -11,6 +11,7 @@ AVL<T>::AVL(T data){
   root = new NodeAVL<T>(data);
   stack = new Stack<NodeAVL<T>**>();
   root->left = root->right = nullptr;
+  root->height = 0;
 }
 template<typename T>
 NodeAVL<T>* AVL<T>::getRoot(){
@@ -51,9 +52,55 @@ void AVL<T>::insert(T data){
 template<typename T>
 void AVL<T>::rebalancing(){
   int fb;
+   NodeAVL<T>** tmp;
   while(!stack->isEmpty()){
-    NodeAVL<T>** tmp;
     //cout<< (*stack->pop())->data;
-
+    tmp = stack->pop();
+    update_Height(*tmp);
+    fb = factor_balance(*tmp);
+    if(fb > 1){
+      //LL
+      if( factor_balance((*tmp)->left) >= 0 ){
+        rotateRight(tmp);
+      }
+      //LR
+      else{
+        rotateLeft( (&(*tmp)->left) );
+        rotateRight(tmp);
+      }
+    }
+    else if( fb < -1){
+      //RR
+      if( factor_balance((*tmp)->right)<= 0 ){
+        rotateLeft(tmp);
+      }
+      //RL
+      else{
+        rotateRight( &((*tmp)->right) );
+        rotateLeft(tmp);
+      }
+    }
   }
+}
+template <typename T>
+void AVL<T>::update_Height(NodeAVL<T>* node){
+  node->height = height(node);
+}
+template <typename T>
+void AVL<T>::rotateRight(NodeAVL<T>** p) {
+  NodeAVL<T>* q = (*p)->left;
+  (*p)->left = q->right;
+  q->right = *p;
+  update_Height(q->right);
+  update_Height(q);
+  *p = q;
+}
+template <typename T>
+void AVL<T>::rotateLeft(NodeAVL<T>** p) {
+  NodeAVL<T>* q = (*p)->right;
+  (*p)->right = q->left;
+  q->left = *p;
+  update_Height(q->left);
+  update_Height(q);
+  *p = q;
 }

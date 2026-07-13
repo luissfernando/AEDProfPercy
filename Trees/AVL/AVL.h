@@ -7,9 +7,12 @@ class AVL{
   NodeAVL <T> *root;
   Stack< NodeAVL<T>** > *stack;
   int factor_balance( NodeAVL <T>* );
-  int height( NodeAVL <T>* );
+  int height(NodeAVL <T>*);
   bool find( NodeAVL <T>**&, T );
   void rebalancing();
+  void update_Height(NodeAVL<T>*);
+  void rotateRight(NodeAVL<T>**);
+  void rotateLeft(NodeAVL<T>**);
   public:
     AVL(T data);
     AVL();
