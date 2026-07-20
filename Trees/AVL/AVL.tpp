@@ -52,15 +52,15 @@ void AVL<T>::insert(T data){
 template<typename T>
 void AVL<T>::rebalancing(){
   int fb;
-   NodeAVL<T>** tmp;
+  NodeAVL<T>** tmp;
   while(!stack->isEmpty()){
     //cout<< (*stack->pop())->data;
     tmp = stack->pop();
     update_Height(*tmp);
     fb = factor_balance(*tmp);
-    if(fb > 1){
+    /*if(fb == 2){
       //LL
-      if( factor_balance((*tmp)->left) >= 0 ){
+      if( factor_balance((*tmp)->left) == 1 ){
         rotateRight(tmp);
       }
       //LR
@@ -69,9 +69,9 @@ void AVL<T>::rebalancing(){
         rotateRight(tmp);
       }
     }
-    else if( fb < -1){
+    else if( fb == -2){
       //RR
-      if( factor_balance((*tmp)->right)<= 0 ){
+      if( factor_balance((*tmp)->right) == -1 ){
         rotateLeft(tmp);
       }
       //RL
@@ -79,7 +79,22 @@ void AVL<T>::rebalancing(){
         rotateRight( &((*tmp)->right) );
         rotateLeft(tmp);
       }
+    }*/
+    if( fb == 2 && factor_balance((*tmp)->right) == -1 ){
+      rotateRight(tmp);
+      rotateLeft(tmp);
     }
+    else if(fb == -2 && factor_balance((*tmp)->left) == 1 ){
+      rotateLeft(tmp);
+      rotateRight(tmp);
+    }
+    else if(fb == 2){
+      rotateLeft(tmp);
+    }
+    else if (fb == -2) {
+      rotateRight(tmp);
+    }
+  
   }
 }
 template <typename T>
