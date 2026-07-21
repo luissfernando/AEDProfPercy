@@ -58,34 +58,13 @@ void AVL<T>::rebalancing(){
     tmp = stack->pop();
     update_Height(*tmp);
     fb = factor_balance(*tmp);
-    /*if(fb == 2){
-      //LL
-      if( factor_balance((*tmp)->left) == 1 ){
-        rotateRight(tmp);
-      }
-      //LR
-      else{
-        rotateLeft( (&(*tmp)->left) );
-        rotateRight(tmp);
-      }
-    }
-    else if( fb == -2){
-      //RR
-      if( factor_balance((*tmp)->right) == -1 ){
-        rotateLeft(tmp);
-      }
-      //RL
-      else{
-        rotateRight( &((*tmp)->right) );
-        rotateLeft(tmp);
-      }
-    }*/
+   
     if( fb == 2 && factor_balance((*tmp)->right) == -1 ){
-      rotateRight(tmp);
+      rotateRight(&((*tmp)->right));
       rotateLeft(tmp);
     }
     else if(fb == -2 && factor_balance((*tmp)->left) == 1 ){
-      rotateLeft(tmp);
+      rotateLeft(&((*tmp)->left));
       rotateRight(tmp);
     }
     else if(fb == 2){
