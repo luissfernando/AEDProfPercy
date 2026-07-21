@@ -38,5 +38,12 @@ bool Stack<T>::isEmpty() {
 }
 
 template <typename T>
+void Stack<T>::clear(){
+  while(!isEmpty()){
+    pop();
+  }
+}
+
+template <typename T>
 Stack<T>::~Stack() {
 }

@@ -11,9 +11,10 @@ class Stack {
   public:
     Stack();
     void push(T data);
-    T pop();
-    T top();
+    T pop(); //elimina y devuelve el ultimo ele
+    T top(); // devuelve el ultimo ele "NO BORRA"
     bool isEmpty();
+    void clear();
     ~Stack();
 };
 #include "Stack.tpp"
