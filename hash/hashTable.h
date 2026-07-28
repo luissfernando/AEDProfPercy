@@ -27,12 +27,12 @@ int HashTable::hash(int key){
 }
 void HashTable::insert(int key, int value){
   int index = hash(key);
-  *(table+index) = Entry(key,value);
+  table[index] = Entry(key,value);
 }
 void HashTable::printHash(){
   for(int i=0;i<capacity;i++){
-    cout<<"key : "<<table->key<<endl;
-    cout<<"valor " <<table->value<<endl;
+    cout<<"key : "<<table[i].key<<" ";
+    cout<<"valor " <<table[i].value<<endl;
   }
 }
 
