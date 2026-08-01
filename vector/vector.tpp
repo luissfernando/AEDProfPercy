@@ -91,7 +91,7 @@ int Vector<T>::getCapacity() {
   return capacity;
 }
 template <typename T>
-void vector<T>::pop(){
+void Vector<T>::pop(){
   if( size == 0 )
     return;
   size--;
