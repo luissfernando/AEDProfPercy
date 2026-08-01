@@ -14,7 +14,7 @@ private:
 
 public:
     void push(T val);
-    void pop();
+    T extractMax();
     T top();
     void print();
 };
