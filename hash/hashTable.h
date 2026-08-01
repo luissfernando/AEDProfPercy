@@ -31,8 +31,8 @@ void HashTable::insert(int key, int value){
 }
 void HashTable::printHash(){
   for(int i=0;i<capacity;i++){
-    cout<<"key : "<<table[i].key<<" ";
-    cout<<"valor " <<table[i].value<<endl;
+    cout<<"key : "<<table->key<<" ";
+    cout<<"valor " <<table->value<<endl;
   }
 }
 
