@@ -5,7 +5,10 @@ template <typename T>
 class Heap{
 private:
     Vector<T> data;
-
+    int left(int);
+    int right(int);
+    int parent(int);
+    
     void heapifyUp(int i);
     void heapifyDown(int i);
 
