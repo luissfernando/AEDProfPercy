@@ -90,7 +90,12 @@ template <typename T>
 int Vector<T>::getCapacity() {
   return capacity;
 }
-
+template <typename T>
+void vector<T>::pop(){
+  if( size == 0 )
+    return;
+  size--;
+}
 template <typename T>
 T& Vector<T>::operator[](int pos) {
   if (pos < 0 || pos >= size) {

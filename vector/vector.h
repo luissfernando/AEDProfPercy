@@ -17,6 +17,7 @@ class Vector{
         T *get_ptrData();
         void swap(T &a, T &b);
         int getSize();
+        void pop();
         int getCapacity();
 
         //sobrecarga
