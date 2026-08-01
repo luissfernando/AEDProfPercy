@@ -13,6 +13,11 @@ AVL<T>::AVL(T data){
   root->left = root->right = nullptr;
   root->height = 0;
 }
+template <typename T>
+AVL<T>::AVL() {
+  root = nullptr;
+  stack = new Stack<NodeAVL<T>**>();
+}
 template<typename T>
 NodeAVL<T>* AVL<T>::getRoot(){
   return root;
@@ -120,4 +125,15 @@ bool AVL<T>::remove(T data){
   delete q;
   rebalancing();
   return true;
+}
+template <typename T>
+bool AVL<T>::find(T data){
+  NodeAVL<T>** p;
+  if( !find(p,data) ) return false;
+  return true;
+}
+template <typename T>
+AVL<T>::~AVL() {
+  delete stack;
+
 }
