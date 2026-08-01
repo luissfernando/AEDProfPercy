@@ -1,6 +1,6 @@
 digraph G {
-4 -> 2;
-4 -> 9;
+8 -> 2;
+8 -> 9;
 2 -> 1;
 2 -> 3;
 null0 [shape=point];
@@ -11,14 +11,11 @@ null2 [shape=point];
 3 -> null2;
 null3 [shape=point];
 3 -> null3;
-9 -> 8;
-9 -> 10;
 null4 [shape=point];
-8 -> null4;
+9 -> null4;
+9 -> 10;
 null5 [shape=point];
-8 -> null5;
+10 -> null5;
 null6 [shape=point];
 10 -> null6;
-null7 [shape=point];
-10 -> null7;
 }

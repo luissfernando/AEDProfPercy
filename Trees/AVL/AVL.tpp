@@ -98,3 +98,26 @@ void AVL<T>::rotateLeft(NodeAVL<T>** p) {
   update_Height(q);
   *p = q;
 }
+template<typename T>
+bool AVL<T>::remove(T data){
+  NodeAVL<T>** p;
+  if(!find(p,data))
+    return false;
+  if((*p)->left && (*p)->right){
+    NodeAVL<T>** succ = &((*p)->right);
+    while((*succ)->left){
+      stack->push(succ);
+      succ = &((*succ)->left);
+    }
+    (*p)->data = (*succ)->data;
+    p = succ;
+  }
+  NodeAVL<T>* q = *p;
+  if((*p)->left)
+    *p = (*p)->left;
+  else
+    *p = (*p)->right;
+  delete q;
+  rebalancing();
+  return true;
+}

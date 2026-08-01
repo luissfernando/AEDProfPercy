@@ -17,6 +17,7 @@ class AVL{
     AVL(T data);
     AVL();
     void insert(T data);
+    bool remove(T data);
     NodeAVL<T>* getRoot();
     ~AVL();
 

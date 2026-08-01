@@ -13,7 +13,7 @@ int main (int argc, char *argv[]) {
   temp->left->right = new NodeAVL<int>(3);
   
   root->insert(9);
-  //root->insert(34);
+  root->remove(4);
   //root->insert(70);
   TreeVisualizer::generate(root->getRoot(),"AVL.dot");
   system("dot -Tpng AVL.dot -o AVL.png");
